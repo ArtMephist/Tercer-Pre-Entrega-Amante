@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Base de Datos</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static '/css/styles.css' %}" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <style>
+            th,td { 
+                border: 1px solid black;
+                padding:4px;
+            }
+        </style>
+        
+        <!-- Navigation-->
+       
+        <nav class="navbar" style="display: flex; flex-wrap: nowrap;flex-direction: row; align-items: center">
+            <div class="container">
+                <a class="navbar-brand" href="#!">Datos Globales</a>
+
+                  
+                
+                <!-- Boton desplegable-->
+                <div class="btn-group dropstart">
+                    <button type="button" selected-disabled="" class="btn btn-secondary dropdown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 50px;height:35px;margin-left: 5px;display: flex;align-content: center;align-items: center;justify-content: flex-start;">
+                        <img class="mr-2" src="/static/assets/icons/menu.png" alt="..." style="background-size: 45px;background-position: center;width: 40px;top: 0px;left: 25px;position: absolute;transform: scale(0.8);height: 35px;margin-left: -20px;">
+                    </button>
+                    <ul id ="Lista-Boton" class="dropdown-menu dropdown-menu-bottom" style="background-color:#212529" style="top: 40px;">
+                      <!-- Dropdown menu links -->
+                        <li><a class="dropdown-item" href="./Search" >Busqueda</a></li>
+                        <li><a class="dropdown-item" href="./register" >Registro</a></li>
+                        <li><a class="dropdown-item" href="" >Datos Completos</a></li>
+                    </ul>
+                  </div>
+
+
+            </div>          
+        </nav>
+
+        <table style="background:#72846B;position: absolute;top: 160px;border-radius: 10px;right: 500px;">
+            <thead>
+                <tr>
+                    <th style="border:1px;border-color:black;">Numero de empleados totales</th>
+                </tr>
+            </thead>
+            <tbody>                   
+                    <tr>
+                        <td style = "position: relative;right: -97px;">{{ Empleados_T.Empleados_Totales }}</td>
+                    </tr>      
+            </tbody>
+        </table>
+
+        
+        <table  style="background:#72846B;position: relative;left: 560px;top: 190px;border-radius: 10px;border; 1px solid black">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Puesto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                    <tr>
+                        <td style = "padding:4px;">{{ empleado.nombre }}</td>
+                        <td>{{ empleado.apellido }}</td>
+                        <td>{{ empleado.puesto }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <table style="background:#72846B;position: relative;top: 190px;border-radius: 10px;left: 540px;">
+            <thead>
+                <tr>
+                    <th>Puesto</th>
+                    <th>Cantidad de Empleados</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Datos_puestos in Datos_puestos %}
+                    <tr>
+                        <td>{{ Datos_puestos.puesto }}</td>
+                        <td>{{ empleado.n_emp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+
+        <footer class="footer bg-light" style="position: absolute;top: 100%;opacity: 100%;width: 100%;">
+
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        
+    </body>
+</html>
