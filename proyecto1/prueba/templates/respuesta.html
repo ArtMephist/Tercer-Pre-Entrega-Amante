@@ -1,0 +1,62 @@
+{% extends "Plantilla.html" %}
+{% block title %}Base de Datos{% endblock %}
+       
+        {% block content %}
+        <style>
+            th,td { 
+                border: 1px solid black;
+                padding:4px;
+            }
+        </style>
+
+        <table style="background:#72846B;position: absolute;top: 160px;border-radius: 10px;right: 500px;">
+            <thead>
+                <tr>
+                    <th style="border:1px;border-color:black;">Numero de empleados totales</th>
+                </tr>
+            </thead>
+            <tbody>                   
+                    <tr>
+                        <td style = "position: relative;right: -97px;">{{ Empleados_T.Empleados_Totales }}</td>
+                    </tr>      
+            </tbody>
+        </table>
+
+        
+        <table  style="background:#72846B;position: relative;left: 560px;top: 190px;border-radius: 10px;border; 1px solid black">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Puesto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                    <tr>
+                        <td style = "padding:4px;">{{ empleado.nombre }}</td>
+                        <td>{{ empleado.apellido }}</td>
+                        <td>{{ empleado.puesto }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <table style="background:#72846B;position: relative;top: 190px;border-radius: 10px;left: 540px;">
+            <thead>
+                <tr>
+                    <th>Puesto</th>
+                    <th>Cantidad de Empleados</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Datos_puestos in Datos_puestos %}
+                    <tr>
+                        <td>{{ Datos_puestos.puesto }}</td>
+                        <td>{{ empleado.n_emp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% endblock %}
