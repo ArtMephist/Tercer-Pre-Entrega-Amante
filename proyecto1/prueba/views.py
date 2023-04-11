@@ -2,12 +2,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import Template, Context
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import RegisterForm, BusquedaForm, RecipeForm, SearchForm
+from .forms import RegisterForm, BusquedaForm
 from .models import Datos_Empleados, N_Empleados_P, N_Emp_Total
 
 # Create your views here.
 
-
+#COMPLETO>>>
 def respuesta(request):
     Empleados = Datos_Empleados.objects.all()
     Datos_puestos = N_Empleados_P.objects.all()
@@ -43,12 +43,13 @@ def register(request):
             
             empleado.save()
 
-            # Redirigir a la página principal del sitio
             return redirect('../')
     else :
         form = RegisterForm()
     return render(request, 'registro.html', {"form":form})
 
+
+#COMPLETO>>>
 def BusquedaDatos(request):
     if request.method == "POST":
         form = BusquedaForm(request.POST)
@@ -58,7 +59,7 @@ def BusquedaDatos(request):
             Empleado_Buscado = Datos_Empleados.objects.get(nombre=Nombre_Buscado,apellido=Apellido_Buscado)
             return render(request,'Login.html',{'form':form ,'Datos':Empleado_Buscado})
     else:
-        form = BusquedaForm()            
+        form = BusquedaForm() 
     return render(request, 'Login.html',{'form':form})
 
 
